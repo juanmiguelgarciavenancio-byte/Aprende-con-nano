@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electricidad, Energía y Tecnología | Juan Miguel García Venancio</title>
+<style>
+:root{--bg:#07111f;--panel:#0d1b2e;--panel2:#12243a;--text:#edf5ff;--muted:#a9bdd3;--blue:#3ba7ff;--cyan:#55e0ff;--line:#28435e;--white:#fff}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f8fc;color:#132337;line-height:1.65}
+header{background:var(--bg);color:var(--text);padding:18px 6%;display:flex;justify-content:space-between;align-items:center;gap:20px;position:sticky;top:0;z-index:10;border-bottom:1px solid #19314b}
+.logo{font-weight:800;letter-spacing:.5px}.logo span{color:var(--cyan)}
+nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+nav a{color:#dcecff;text-decoration:none;padding:8px 12px;border-radius:20px;font-size:.92rem}
+nav a:hover{background:#173451}
+.hero{background:linear-gradient(135deg,#07111f 0%,#0d2947 55%,#0a5b83 100%);color:white;padding:90px 7% 80px;position:relative;overflow:hidden}
+.hero:after{content:"⚡";position:absolute;right:8%;top:25px;font-size:180px;opacity:.08}
+.badge{display:inline-block;border:1px solid #4f7899;border-radius:30px;padding:7px 14px;color:#bdeaff;font-size:.9rem}
+.hero h1{font-size:clamp(2.5rem,7vw,5.8rem);line-height:.98;max-width:850px;margin:20px 0}
+.hero h1 span{color:var(--cyan)}
+.hero p{max-width:720px;color:#d5e7f8;font-size:1.1rem}
+.student{margin-top:28px;border-left:4px solid var(--cyan);padding-left:16px}
+.student strong{display:block;font-size:1.15rem}
+.btn{display:inline-block;margin-top:25px;background:var(--cyan);color:#062034;text-decoration:none;padding:12px 19px;border-radius:10px;font-weight:800}
+main{max-width:1150px;margin:auto;padding:55px 20px}
+section{margin-bottom:70px}
+.kicker{color:#0874b9;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;font-size:.82rem}
+h2{font-size:2.1rem;margin:5px 0 12px;color:#0b223b}
+.lead{max-width:760px;color:#53677c}
+.path{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.path div{padding:25px;border:1px solid #d7e2ed;border-radius:18px;background:white;box-shadow:0 8px 25px #102a4010}
+.path b{display:block;color:#0874b9;font-size:1.2rem;margin-bottom:8px}
+.concepts{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.concept{background:#0b1c30;color:white;border-radius:18px;padding:22px;min-height:180px;border-top:3px solid var(--blue)}
+.concept h3{margin-top:0;color:#8cddff}.formula{font-size:1.35rem;color:#fff;background:#163653;padding:9px 12px;border-radius:9px;display:inline-block;margin-top:8px}
+.flow{background:var(--bg);color:white;border-radius:24px;padding:30px}
+.flowrow{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:25px}
+.node{background:#132b45;border:1px solid #315878;padding:15px 20px;border-radius:13px;text-align:center;min-width:150px}.arrow{color:var(--cyan);font-size:1.5rem}
+.energy{display:grid;grid-template-columns:1.2fr .8fr;gap:22px}
+.panel{background:white;border:1px solid #d8e3ed;border-radius:20px;padding:25px}
+.panel.dark{background:#0b1c30;color:white;border-color:#193b59}
+.list{padding-left:20px}
+.ohm{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.calc{background:#eaf5ff;border-radius:18px;padding:22px}
+input{width:100%;padding:12px;border:1px solid #b9cada;border-radius:9px;font-size:1rem;margin:6px 0 12px}
+button{border:0;border-radius:9px;padding:12px 16px;background:#0874b9;color:white;font-weight:800;cursor:pointer}
+.result{margin-top:15px;font-weight:800;color:#075d91}
+.quiz{background:#07111f;color:white;border-radius:24px;padding:30px}
+.quiz-head{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+.quiz-title{font-size:2rem;margin:0}.progress{color:#8fdfff}
+.question{background:#10253b;border:1px solid #294864;border-radius:16px;padding:20px;margin-top:20px}
+.options{display:grid;gap:10px;margin-top:15px}
+.options label{display:block;background:#17334e;border:1px solid #315878;border-radius:10px;padding:12px;cursor:pointer}
+.options label:hover{background:#204363}
+.quiz button{margin-top:18px;background:var(--cyan);color:#062034}
+#score{font-size:1.2rem;margin-top:18px;min-height:30px}
+.sources{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.source{background:#fff;border:1px solid #d8e3ed;border-radius:16px;padding:18px}
+footer{background:#06101c;color:#a9bdd3;text-align:center;padding:30px 20px}
+footer strong{color:white}
+@media(max-width:800px){header{align-items:flex-start;flex-direction:column}nav{justify-content:flex-start}.path,.concepts,.energy,.ohm,.sources{grid-template-columns:1fr}.hero{padding-top:65px}.hero:after{font-size:110px}.quiz{padding:20px}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">FÍSICA <span>• 5IV16</span></div>
+<nav>
+<a href="#inicio">Inicio</a><a href="#conceptos">Conceptos</a><a href="#energia">Energía</a><a href="#tecnologia">Tecnología</a><a href="#ohm">Ohm</a><a href="#quiz">Quiz</a>
+</nav>
+</header>
+
+<section class="hero" id="inicio">
+<span class="badge">Proyecto escolar de Física</span>
+<h1>Electricidad,<br><span>energía y tecnología</span></h1>
+<p>Un recorrido por los principios de la electricidad, su transformación en energía útil y la manera en que hace posible gran parte de la tecnología que usamos todos los días.</p>
+<div class="student">
+<strong>Juan Miguel García Venancio</strong>
+Grupo 5IV16 · IPN<br>
+Centro de Estudios Científicos y Tecnológicos No. 11 “Wilfrido Massieu”
+</div>
+<a class="btn" href="#conceptos">Explorar el tema →</a>
+</section>
+
+<main>
+<section>
+<div class="kicker">La idea central</div>
+<h2>Del movimiento de cargas a la tecnología</h2>
+<p class="lead">La electricidad se relaciona con la presencia y el movimiento de cargas eléctricas. Para comprender sus aplicaciones conviene conectar tres ideas: qué ocurre con las cargas, cómo se transforma la energía y qué dispositivos aprovechan esos fenómenos.</p>
+<div class="path">
+<div><b>01 · Electricidad</b> Cargas, corriente, voltaje, resistencia y potencia.</div>
+<div><b>02 · Energía</b> La electricidad puede transferirse y transformarse en otras formas de energía.</div>
+<div><b>03 · Tecnología</b> Circuitos, motores, dispositivos electrónicos y sistemas eléctricos utilizan estos principios.</div>
+</div>
+</section>
+
+<section id="conceptos">
+<div class="kicker">01 / Electricidad</div>
+<h2>Conceptos que necesitas dominar</h2>
+<div class="concepts">
+<article class="concept"><h3>Carga eléctrica</h3><p>Propiedad física de la materia. Puede ser positiva o negativa.</p><div class="formula">q → coulomb (C)</div></article>
+<article class="concept"><h3>Corriente</h3><p>Describe el flujo de carga eléctrica a través de un conductor.</p><div class="formula">I = Q / t</div></article>
+<article class="concept"><h3>Voltaje</h3><p>Es la diferencia de potencial eléctrico entre dos puntos.</p><div class="formula">V → volt (V)</div></article>
+<article class="concept"><h3>Resistencia</h3><p>Es la oposición que presenta un material al paso de la corriente.</p><div class="formula">R → ohm (Ω)</div></article>
+<article class="concept"><h3>Potencia</h3><p>Indica qué tan rápido se transfiere o transforma la energía.</p><div class="formula">P = V · I</div></article>
+<article class="concept"><h3>Energía eléctrica</h3><p>Es la energía asociada al movimiento y a las interacciones de las cargas.</p><div class="formula">E = P · t</div></article>
+</div>
+</section>
+
+<section id="energia">
+<div class="kicker">02 / Energía</div>
+<h2>La electricidad no aparece de la nada</h2>
+<div class="flow">
+<p>En un sistema eléctrico, una forma de energía puede transformarse en energía eléctrica y después en otra forma útil.</p>
+<div class="flowrow">
+<div class="node">Fuente de energía</div><div class="arrow">→</div><div class="node">Generación eléctrica</div><div class="arrow">→</div><div class="node">Transporte y uso</div><div class="arrow">→</div><div class="node">Luz · calor · movimiento · información</div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="energy">
+<div class="panel">
+<div class="kicker">Generación</div>
+<h2>¿De dónde puede venir?</h2>
+<ul class="list">
+<li><strong>Solar:</strong> aprovecha la radiación del Sol.</li>
+<li><strong>Hidroeléctrica:</strong> utiliza el movimiento del agua.</li>
+<li><strong>Eólica:</strong> aprovecha el movimiento del viento.</li>
+<li><strong>Geotérmica:</strong> utiliza el calor interno de la Tierra.</li>
+<li><strong>Nuclear:</strong> aprovecha energía liberada en reacciones nucleares.</li>
+<li><strong>Termoeléctrica:</strong> emplea calor para producir electricidad mediante sistemas de generación.</li>
+</ul>
+</div>
+<div class="panel dark">
+<h2>Una transformación cotidiana</h2>
+<p>En una lámpara, la energía eléctrica se transforma principalmente en luz y también en calor.</p>
+<p>En un motor, la energía eléctrica se transforma en energía mecánica.</p>
+</div>
+</div>
+</section>
+
+<section id="tecnologia">
+<div class="kicker">03 / Tecnología</div>
+<h2>Electricidad aplicada</h2>
+<p class="lead">Los principios eléctricos se encuentran detrás de numerosos sistemas modernos.</p>
+<div class="path">
+<div><b>📱 Comunicación</b> Teléfonos y equipos electrónicos necesitan circuitos y fuentes de energía.</div>
+<div><b>🚗 Transporte</b> Los vehículos eléctricos emplean baterías, control electrónico y motores.</div>
+<div><b>🏭 Industria</b> Motores y sistemas eléctricos permiten automatizar y controlar procesos.</div>
+<div><b>🏠 Vida diaria</b> Iluminación, electrodomésticos y cargadores dependen de sistemas eléctricos.</div>
+<div><b>🏥 Medicina</b> Muchos equipos médicos utilizan sistemas eléctricos y electrónicos.</div>
+<div><b>💻 Computación</b> Los dispositivos digitales funcionan mediante circuitos electrónicos.</div>
+</div>
+</section>
+
+<section id="ohm">
+<div class="kicker">04 / Herramienta</div>
+<h2>Ley de Ohm</h2>
+<div class="ohm">
+<div class="panel">
+<p>La Ley de Ohm relaciona el voltaje, la corriente y la resistencia:</p>
+<div class="formula">V = I · R</div>
+<p>Si conoces dos de estas magnitudes, puedes calcular la tercera.</p>
+</div>
+<div class="calc">
+<label>Voltaje (V)<input id="v" type="number" min="0" step="any" placeholder="Ej. 12"></label>
+<label>Resistencia (Ω)<input id="r" type="number" min="0.000001" step="any" placeholder="Ej. 6"></label>
+<button type="button" onclick="calcOhm()">Calcular corriente</button>
+<div class="result" id="ohmResult">Introduce valores para obtener I.</div>
+</div>
+</div>
+</section>
+
+<section id="quiz">
+<div class="quiz">
+<div class="quiz-head">
+<div><div class="kicker" style="color:#55e0ff">05 / Comprueba lo aprendido</div><h2 class="quiz-title">Quiz de electricidad</h2></div>
+<div class="progress" id="progress">5 preguntas</div>
+</div>
+<form id="quizForm">
+<div class="question"><strong>1. ¿Qué unidad se utiliza para medir la corriente eléctrica?</strong><div class="options">
+<label><input type="radio" name="q1" value="a"> A) Volt (V)</label>
+<label><input type="radio" name="q1" value="b"> B) Ampere (A)</label>
+<label><input type="radio" name="q1" value="c"> C) Ohm (Ω)</label></div></div>
+<div class="question"><strong>2. ¿Cuál expresa la Ley de Ohm?</strong><div class="options">
+<label><input type="radio" name="q2" value="a"> A) V = I · R</label>
+<label><input type="radio" name="q2" value="b"> B) P = m · g</label>
+<label><input type="radio" name="q2" value="c"> C) E = m · c²</label></div></div>
+<div class="question"><strong>3. ¿Qué componente se opone al paso de la corriente?</strong><div class="options">
+<label><input type="radio" name="q3" value="a"> A) Resistencia</label>
+<label><input type="radio" name="q3" value="b"> B) Batería</label>
+<label><input type="radio" name="q3" value="c"> C) Interruptor abierto</label></div></div>
+<div class="question"><strong>4. ¿Qué transformación ocurre en un motor eléctrico?</strong><div class="options">
+<label><input type="radio" name="q4" value="a"> A) Eléctrica → mecánica</label>
+<label><input type="radio" name="q4" value="b"> B) Mecánica → nuclear</label>
+<label><input type="radio" name="q4" value="c"> C) Térmica → química</label></div></div>
+<div class="question"><strong>5. ¿Qué fenómeno está relacionado con el movimiento de cargas?</strong><div class="options">
+<label><input type="radio" name="q5" value="a"> A) Corriente eléctrica</label>
+<label><input type="radio" name="q5" value="b"> B) Masa</label>
+<label><input type="radio" name="q5" value="c"> C) Densidad</label></div></div>
+<button type="button" onclick="checkQuiz()">Revisar mis respuestas</button>
+<div id="score" aria-live="polite"></div>
+</form>
+</div>
+</section>
+
+<section>
+<div class="kicker">Fuentes</div>
+<h2>Para consultar y ampliar</h2>
+<div class="sources">
+<div class="source"><strong>OpenStax Physics</strong><p>Material educativo de física sobre electricidad y circuitos.</p></div>
+<div class="source"><strong>Encyclopaedia Britannica</strong><p>Información general sobre electricidad y fenómenos físicos.</p></div>
+<div class="source"><strong>U.S. Energy Information Administration</strong><p>Información sobre generación y formas de energía.</p></div>
+</div>
+</section>
+</main>
+
+<footer>
+<strong>Electricidad, energía y tecnología</strong><br>
+Juan Miguel García Venancio · Grupo 5IV16<br>
+IPN · Centro de Estudios Científicos y Tecnológicos No. 11 “Wilfrido Massieu”
+</footer>
+
+<script>
+function calcOhm(){
+ const v=Number(document.getElementById('v').value), r=Number(document.getElementById('r').value), out=document.getElementById('ohmResult');
+ if(!Number.isFinite(v)||!Number.isFinite(r)||v<0||r<=0){out.textContent='Ingresa un voltaje válido y una resistencia mayor que 0.';return}
+ out.textContent='Corriente: '+(v/r).toFixed(3)+' A';
+}
+function checkQuiz(){
+ const ans={q1:'b',q2:'a',q3:'a',q4:'a',q5:'a'}; let score=0;
+ Object.keys(ans).forEach(q=>{const selected=document.querySelector('input[name="'+q+'"]:checked');if(selected&&selected.value===ans[q])score++});
+ const out=document.getElementById('score');
+ out.textContent='Resultado: '+score+' / 5 correctas. '+(score===5?'¡Excelente!':score>=3?'¡Bien! Repasa las que fallaste.':'Conviene repasar los conceptos y volver a intentarlo.');
+ document.getElementById('progress').textContent='Resultado: '+score+'/5';
+}
+</script>
+</body>
+</html>
